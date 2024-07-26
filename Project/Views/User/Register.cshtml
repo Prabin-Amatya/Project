@@ -1,0 +1,25 @@
+﻿@model Project.Models.User
+
+<form action="Register" method="post">
+    <div class="form-floating">
+        <input asp-for="Email" class="form-control" />
+        <label>Email</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <input asp-for="Password" class="form-control" type="password"/>
+        <label>Password</label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <select asp-for="Role" class="form-select">
+        <option>ADMIN</option>
+        <option>USER</option>
+    </select>
+ 
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

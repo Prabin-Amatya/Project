@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Project.Models.Student>
+
+<h3 class="text-success">@TempData["Message"]</h3>
+
+<h3>Student List</h3>
+ @if (User.IsInRole("ADMIN"))
+  {
+    <a class="btn btn-primary" asp-action="AddEdit">Add</a>
+  }
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>PhoneNumber</th>
+            @if (User.IsInRole("ADMIN"))
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var items in Model) {
+            <tr>
+                <td>@items.Name</td>
+                <td>@items.Address</td>
+                <td>@items.PhoneNumber</td>
+                @if (User.IsInRole("ADMIN"))
+                {
+                    <td>
+                        <a class="btn btn-primary" asp-action="AddEdit" asp-route-id="@items.Id">Edit</a>
+                </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
